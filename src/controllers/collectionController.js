@@ -1,10 +1,10 @@
-import CollectionModelModel from "../models/collectionModel.js";
+import CollectionModel from "../models/collectionModel.js";
 
 class CollectionController {
   // GET /colecoes
-  async getAllColletions(req, res) {
+  async getAllCollections(req, res) {
     try {
-      const colecoes = await CollectionModelModel.findAll();
+      const colecoes = await CollectionModel.findAll();
       res.json(colecoes);
     } catch (error) {
       console.error("Erro ao buscar coleções:", error);
@@ -12,26 +12,26 @@ class CollectionController {
     }
   }
 
-  // GET /api/personagens/:id
-  async getPersonagemById(req, res) {
+  // GET /colecoes/:id
+  async getCollectionById(req, res) {
     try {
       const { id } = req.params;
 
-      const personagem = await PersonagemModel.findById(id);
+      const colecao = await CollectionModel.findById(id);
 
-      if (!personagem) {
-        return res.status(404).json({ error: "Personagem não encontrado" });
+      if (!colecao) {
+        return res.status(404).json({ error: "Coleção não encontrado" });
       }
 
-      res.json(personagem);
+      res.json(colecao);
     } catch (error) {
-      console.error("Erro ao buscar personagem:", error);
-      res.status(500).json({ error: "Erro ao buscar personagem" });
+      console.error("Erro ao buscar coleção:", error);
+      res.status(500).json({ error: "Erro ao buscar coleção" });
     }
   }
 
-  // POST /api/personagens
-  async createPersonagem(req, res) {
+  // POST /colecoes
+  async createCollection(req, res) {
     try {
       // Validação básica
       const {
