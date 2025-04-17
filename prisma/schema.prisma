@@ -49,7 +49,7 @@ model Personagem {
 model Collection {
   id          Int     @id @default(autoincrement())
   name        String  @unique // Não pode ter outra com memsmo nome
-  desription  String?
+  description  String?
   releaseYear Int
 
   // Segundo: configuramos a marcação da lista de dados da tabela dependente
