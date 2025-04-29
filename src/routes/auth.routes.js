@@ -8,4 +8,7 @@ const authRouter = express.Router();
 // POST / auth/register - Registrar um novo usuário
 authRouter.post("/register", authController.register);
 
+// POST / auth/login - Fazer login
+authRouter.post("/login", authController.login);
+
 export default authRouter;
