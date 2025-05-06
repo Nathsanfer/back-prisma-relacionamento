@@ -90,7 +90,17 @@ async function main() {
             },
         }),
     ]);
-
+    console.log(
+        `Seed concluído! Criadas ${await prisma.collection.count()} coleções e ${await prisma.card.count()} cards.`
+    );
 }
 
+main()
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    })
+    .finally(async () => {
+        await prisma.$disconnect();
+    });
 
