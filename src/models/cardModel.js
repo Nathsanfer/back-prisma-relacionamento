@@ -2,8 +2,16 @@ import prisma from "../../prisma/prisma.js";
 
 class CardModel {
   // Obter todas as cartas
-  async findAll() {
+  async findAll(raridade, ataque) {
+
+    const where = {};
+
+    if (raridade) {
+      where.rarity = raridade;
+    }
+
     const cartas = await prisma.card.findMany({
+      where,
       orderBy: {
         createdAt: "desc",
       },
